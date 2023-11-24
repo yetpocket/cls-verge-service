@@ -1,11 +1,14 @@
 name: Release CI
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+  push:
+      branches:
+        - main
 
 jobs:
   release-update:
     runs-on: windows-latest
-    if: startsWith(github.repository, 'zzzgydi')
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
