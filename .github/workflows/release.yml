@@ -21,7 +21,9 @@ jobs:
           override: true
 
       - name: Build
-        run: cargo build --release
+        run: |
+          rustup default stable-msvc
+          cargo build --release
 
       - name: Release
         uses: softprops/action-gh-release@v1
