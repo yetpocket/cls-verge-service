@@ -27,6 +27,9 @@ fn main() -> windows_service::Result<()> {
         thread::sleep(Duration::from_secs(1));
     }
 
-    service.delete()?;
+    if let Err(err) = service.delete() {
+        eprintln!("delete service error at {:?}", err);
+        return Err(err);
+    }
     Ok(())
 }
