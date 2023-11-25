@@ -21,7 +21,7 @@ fn main() -> windows_service::Result<()> {
     let service_status = service.query_status()?;
     if service_status.current_state != ServiceState::Stopped {
         if let Err(err) = service.stop() {
-            eprintln!("{err}");
+            eprintln!("try stop service error at {:?}", err);
         }
         // Wait for service to stop
         thread::sleep(Duration::from_secs(1));
